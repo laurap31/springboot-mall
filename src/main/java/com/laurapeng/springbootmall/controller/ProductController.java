@@ -1,5 +1,7 @@
 package com.laurapeng.springbootmall.controller;
 
+import com.laurapeng.springbootmall.constant.ProductCategory;
+import com.laurapeng.springbootmall.dto.ProductQueryParams;
 import com.laurapeng.springbootmall.dto.ProductRequest;
 import com.laurapeng.springbootmall.model.Product;
 import com.laurapeng.springbootmall.service.ProductService;
@@ -8,11 +10,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class ProductController {
 
     @Autowired
     private ProductService productService;
+
+    @GetMapping("/products")
+    public ResponseEntity<List<Product>> getProducts(
+            @RequestParam(required = false) ProductCategory category,
+            @RequestParam(required = false) String search
+    ) {
+        ProductQueryParams productQueryParams = new ProductQueryParams();
+        productQueryParams.setCategory(category);
+        productQueryParams.setSearch(search);
+
+        List<Product> productList = productService.getProducts(productQueryParams);
+
+        return ResponseEntity.ok(productList);
+    }
 
     @GetMapping("/products/{productId}")
     public ResponseEntity<Product> getProduct(@PathVariable Integer productId) {

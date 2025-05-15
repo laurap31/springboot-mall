@@ -1,9 +1,14 @@
 package com.laurapeng.springbootmall.dao;
 
+import com.laurapeng.springbootmall.dto.ProductQueryParams;
 import com.laurapeng.springbootmall.dto.ProductRequest;
 import com.laurapeng.springbootmall.model.Product;
 
+import java.util.List;
+
 public interface ProductDao {
+
+    List<Product> getProducts(ProductQueryParams productQueryParams);
 
     Product getProductById(Integer productId);
 

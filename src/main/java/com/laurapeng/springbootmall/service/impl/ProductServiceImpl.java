@@ -1,17 +1,25 @@
 package com.laurapeng.springbootmall.service.impl;
 
 import com.laurapeng.springbootmall.dao.ProductDao;
+import com.laurapeng.springbootmall.dto.ProductQueryParams;
 import com.laurapeng.springbootmall.dto.ProductRequest;
 import com.laurapeng.springbootmall.model.Product;
 import com.laurapeng.springbootmall.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductDao productDao;
+
+    @Override
+    public List<Product> getProducts(ProductQueryParams productQueryParams) {
+        return productDao.getProducts(productQueryParams);
+    }
 
     @Override
     public Product getProductById(Integer productId) {
