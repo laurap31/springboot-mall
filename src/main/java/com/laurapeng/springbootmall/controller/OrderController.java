@@ -1,6 +1,7 @@
 package com.laurapeng.springbootmall.controller;
 
 import com.laurapeng.springbootmall.dto.CreateOrderRequest;
+import com.laurapeng.springbootmall.model.Order;
 import com.laurapeng.springbootmall.service.OrderService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,8 @@ public class OrderController {
 
         Integer orderId = orderService.createOrder(userId, createOrderRequest);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(orderId);
+        Order order = orderService.getOrderById(orderId);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(order);
     }
 }

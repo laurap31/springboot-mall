@@ -10,4 +10,7 @@ public class OrderItem {
     private Integer ProductId;
     private Integer Quantity;
     private Integer amount;
+
+    private String productName;
+    private String imageUrl;
 }
