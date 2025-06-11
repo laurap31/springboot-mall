@@ -14,5 +14,5 @@ public class Order {
     private Date createdDate;
     private Date lastModifiedDate;
 
-    private List<OrderItem> orderItems;
+    private List<OrderItem> orderItemList;
 }

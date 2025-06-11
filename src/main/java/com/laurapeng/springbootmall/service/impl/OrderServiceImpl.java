@@ -48,7 +48,7 @@ public class OrderServiceImpl implements OrderService {
         for (Order order : orderList) {
             List<OrderItem> orderItemList = orderDao.getOrderItemsByOrderId(order.getOrderId());
 
-            order.setOrderItems(orderItemList);
+            order.setOrderItemList(orderItemList);
         }
 
         return orderList;
@@ -60,7 +60,7 @@ public class OrderServiceImpl implements OrderService {
 
         List<OrderItem> orderItemList = orderDao.getOrderItemsByOrderId(orderId);
 
-        order.setOrderItems(orderItemList);
+        order.setOrderItemList(orderItemList);
 
         return order;
     }
