@@ -46,10 +46,10 @@ public class ProductController {
         productQueryParams.setLimit(limit);
         productQueryParams.setOffset(offset);
 
-        // get product list
+        // Get product list
         List<Product> productList = productService.getProducts(productQueryParams);
 
-        // get total product count
+        // Get total product count
         Integer total = productService.countProduct(productQueryParams);
 
         // Pagination

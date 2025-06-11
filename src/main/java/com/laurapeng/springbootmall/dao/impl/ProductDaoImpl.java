@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 @Component
-public class productDaoImpl implements ProductDao {
+public class ProductDaoImpl implements ProductDao {
 
     @Autowired
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
@@ -48,7 +48,7 @@ public class productDaoImpl implements ProductDao {
         // Filtering
         sql = addFilteringSql(sql, map, productQueryParams);
 
-        //Sorting
+        // Sorting
         sql += " ORDER BY " + productQueryParams.getOrderBy() + " " + productQueryParams.getSort();
 
         // Pagination

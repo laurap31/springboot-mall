@@ -115,7 +115,7 @@ public class OrderDaoImpl implements OrderDao {
     @Override
     public void createOrderItems(Integer orderId, List<OrderItem> orderItemList) {
 
-        String sql = "INSERT INTO order_item(order_id, product_Id, quantity, amount) " +
+        String sql = "INSERT INTO order_item(order_id, product_id, quantity, amount) " +
                 "VALUES(:orderId, :productId, :quantity, :amount)";
 
         MapSqlParameterSource[] parameterSources = new MapSqlParameterSource[orderItemList.size()];
@@ -135,7 +135,7 @@ public class OrderDaoImpl implements OrderDao {
 
     private String addFilteringSql(String sql, Map<String, Object> map, OrderQueryParams orderQueryParams) {
         if (orderQueryParams.getUserId() != null) {
-            sql += " AND user_Id = :userId ";
+            sql += " AND user_id = :userId ";
             map.put("userId", orderQueryParams.getUserId());
         }
 

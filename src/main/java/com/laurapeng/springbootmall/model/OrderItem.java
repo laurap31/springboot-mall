@@ -5,10 +5,10 @@ import lombok.Data;
 @Data
 public class OrderItem {
 
-    private Integer OrderItemId;
-    private Integer OrderId;
-    private Integer ProductId;
-    private Integer Quantity;
+    private Integer orderItemId;
+    private Integer orderId;
+    private Integer productId;
+    private Integer quantity;
     private Integer amount;
 
     private String productName;
