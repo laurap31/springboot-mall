@@ -6,6 +6,7 @@ import com.laurapeng.springbootmall.dto.ProductRequest;
 import com.laurapeng.springbootmall.model.Product;
 import com.laurapeng.springbootmall.service.ProductService;
 import com.laurapeng.springbootmall.util.Page;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -24,6 +25,7 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+    @Operation(summary = "取得商品列表")
     @GetMapping("/products")
     public ResponseEntity<Page<Product>> getProducts(
             // Filtering
@@ -62,6 +64,7 @@ public class ProductController {
         return ResponseEntity.ok(page);
     }
 
+    @Operation(summary = "取得單一商品")
     @GetMapping("/products/{productId}")
     public ResponseEntity<Product> getProduct(@PathVariable Integer productId) {
         Product product = productService.getProductById(productId);
@@ -73,6 +76,7 @@ public class ProductController {
         }
     }
 
+    @Operation(summary = "新增商品")
     @PostMapping("/products")
     public ResponseEntity<Product> createProduct(@RequestBody @Valid ProductRequest productRequest) {
         Integer productId = productService.createProduct(productRequest);
@@ -82,6 +86,7 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.CREATED).body(product);
     }
 
+    @Operation(summary = "修改商品")
     @PutMapping("products/{productId}")
     public ResponseEntity<Product> updateProduct(
             @PathVariable Integer productId,
@@ -101,6 +106,7 @@ public class ProductController {
         return ResponseEntity.ok(updateProduct);
     }
 
+    @Operation(summary = "刪除商品")
     @DeleteMapping("/products/{productId}")
     public ResponseEntity<?> deleteProduct(@PathVariable Integer productId) {
         productService.deleteProductById(productId);
